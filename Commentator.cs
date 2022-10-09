@@ -47,8 +47,6 @@ namespace BattleShip
                 WriteLine("{0} {1} is sink", title, nameof(navyAsset.Submarine));
                 navyAsset.CheckSubmarine = false;
             }
-            // navyAsset.IsBattleshipSunk
-
         }
     }
 }

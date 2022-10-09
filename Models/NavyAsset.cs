@@ -57,8 +57,6 @@ namespace BattleShip.Models
             IsCruiserSunk = Cruiser.Where(Cruiser => !HitPositions.Any(H => Cruiser.x == H.x && Cruiser.y == H.y)).ToList().Count == 0;
             IsSubmarineSunk = Submarine.Where(Submarine => !HitPositions.Any(H => Submarine.x == H.x && Submarine.y == H.y)).ToList().Count == 0;
             IsDestroyerSunk = Destroyer.Where(Destroyer => !HitPositions.Any(H => Destroyer.x == H.x && Destroyer.y == H.y)).ToList().Count == 0;
-
-
             IsObliteratedAll = IsAircraftSunk && IsBattleshipSunk && IsDestroyerSunk && IsSubmarineSunk && IsDestroyerSunk;
             return this;
         }

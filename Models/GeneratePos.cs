@@ -20,10 +20,7 @@ namespace BattleShip.Models
                 IsExist = positions.Where(pos => AllPosition.Exists(ShipPos => ShipPos.x == pos.x && ShipPos.y == pos.y)).Any();
             }
             while (IsExist);
-
             AllPosition.AddRange(positions);
-
-
             return positions;
         }
         public List<Position> GeneratePositionRandomly(int size)

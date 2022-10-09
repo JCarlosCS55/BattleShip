@@ -52,9 +52,7 @@ namespace BattleShip
                     continue;
                 }
 
-
                 EnemyNavyAsset.Fire();
-
 
                 var index = MyNavyAsset.FirePositions.FindIndex(p => p.x == position.x && p.y == position.y);
 
@@ -62,8 +60,6 @@ namespace BattleShip
                     MyNavyAsset.FirePositions.Add(position);
 
                 Clear();
-
-
 
                 MyNavyAsset.AllShipsPosition.OrderBy(o => o.x).ThenBy(n => n.y).ToList();
                 MyNavyAsset.CheckShipStatus(EnemyNavyAsset.FirePositions);
@@ -81,7 +77,6 @@ namespace BattleShip
                 commentator.CommentatorGame(MyNavyAsset, true);
                 commentator.CommentatorGame(EnemyNavyAsset, false);
                 if (EnemyNavyAsset.IsObliteratedAll || MyNavyAsset.IsObliteratedAll) { break; }
-
             }
 
             ForegroundColor = ConsoleColor.White;
@@ -98,7 +93,6 @@ namespace BattleShip
             {
                 WriteLine("Game Ended, draw.");
             }
-
             WriteLine("Total steps taken:{0} ", Game);
             ReadLine();
         }
@@ -109,14 +103,10 @@ namespace BattleShip
 
             char[] inputSplit = input.ToUpper().ToCharArray();
 
-
             if (inputSplit.Length < 2 || inputSplit.Length > 4)
             {
                 return pos;
             }
-
-
-
 
             if (Coordinates.TryGetValue(inputSplit[0], out int value))
             {
@@ -127,10 +117,8 @@ namespace BattleShip
                 return pos;
             }
 
-
             if (inputSplit.Length == 3)
             {
-
                 if (inputSplit[1] == '1' && inputSplit[2] == '0')
                 {
                     pos.y = 10;
@@ -140,9 +128,7 @@ namespace BattleShip
                 {
                     return pos;
                 }
-
             }
-
 
             if (inputSplit[1] - '0' > 9)
             {
@@ -152,7 +138,6 @@ namespace BattleShip
             {
                 pos.y = inputSplit[1] - '0';
             }
-
             return pos;
         }
         static Dictionary<char, int> PopulateDictionary()
@@ -171,7 +156,6 @@ namespace BattleShip
                          { 'I', 9 },
                          { 'J', 10 }
                      };
-
             return Coordinate;
         }
     }
