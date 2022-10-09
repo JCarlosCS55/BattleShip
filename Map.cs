@@ -1,6 +1,7 @@
 ﻿using BattleShip.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using static System.Console;
@@ -90,11 +91,11 @@ namespace BattleShip
                         if (keepGoing)
                         {
                             ForegroundColor = ConsoleColor.Blue;
-                            Write("[~]");
+                            Write("[ ]");
                         }
 
 
-                        PrintStatistic(x, y, MyNavyAsset);
+                        PrintStatistic(x, y, MyNavyAsset,1);
 
 
                         if (y == 10)
@@ -115,12 +116,21 @@ namespace BattleShip
             }
         }
 
-        static void PrintStatistic(int x, int y, NavyAsset navyAsset)
+        static void PrintStatistic(int x, int y, NavyAsset navyAsset,int value)
         {
             if (x == 1 && y == 10)
             {
-                ForegroundColor = ConsoleColor.White;
-                Write("Indicator:    ");
+                if(value == 1)
+                {
+                    ForegroundColor = ConsoleColor.White;
+                    Write("Enemy Board:  ");
+                    value = value + 1;
+                }
+                else
+                {
+                    ForegroundColor = ConsoleColor.White;
+                    Write("Your Board:   ");
+                }
             }
 
 
@@ -129,12 +139,12 @@ namespace BattleShip
                 if (navyAsset.IsAircraftSunk)
                 {
                     ForegroundColor = ConsoleColor.Red;
-                    Write("Carrier [5]   ");
+                    Write("Aircraft [5]  ");
                 }
                 else
                 {
                     ForegroundColor = ConsoleColor.DarkGreen;
-                    Write("Carrier [5]   ");
+                    Write("Aircraft [5]  ");
                 }
 
             }
@@ -159,12 +169,12 @@ namespace BattleShip
                 if (navyAsset.IsCruiserSunk)
                 {
                     ForegroundColor = ConsoleColor.Red;
-                    Write("Destroyer [3] ");
+                    Write("Cruiser [3]    ");
                 }
                 else
                 {
                     ForegroundColor = ConsoleColor.DarkGreen;
-                    Write("Destroyer [3] ");
+                    Write("Cruiser [3]   ");
                 }
             }
 
@@ -189,12 +199,12 @@ namespace BattleShip
                 if (navyAsset.IsDestroyerSunk)
                 {
                     ForegroundColor = ConsoleColor.Red;
-                    Write("PatrolBoat [2]");
+                    Write("Destroyer [2] ");
                 }
                 else
                 {
                     ForegroundColor = ConsoleColor.DarkGreen;
-                    Write("PatrolBoat [2]");
+                    Write("Destroyer [2] ");
                 }
 
             }
@@ -287,11 +297,11 @@ namespace BattleShip
                     if (keepGoing)
                     {
                         ForegroundColor = ConsoleColor.Blue;
-                        Write("[~]");
+                        Write("[ ]");
                     }
 
 
-                    PrintStatistic(x, y, EnemyNavyAsset);
+                    PrintStatistic(x, y, EnemyNavyAsset,0);
 
                 }
 
@@ -303,7 +313,7 @@ namespace BattleShip
             }
         }
 
-        static void PrintHeader()
+        public void PrintHeader()
         {
             ForegroundColor = ConsoleColor.DarkYellow;
             Write("[ ]");

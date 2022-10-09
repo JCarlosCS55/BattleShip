@@ -44,7 +44,7 @@ namespace BattleShip.Models
 
 
         public bool CheckAircraft { get; set; } = true;
-        public bool CheckPBattleship { get; set; } = true;
+        public bool CheckBattleship { get; set; } = true;
         public bool CheckCruiser { get; set; } = true;
         public bool CheckSubmarine { get; set; } = true;
         public bool CheckDestroyer { get; set; } = true;
